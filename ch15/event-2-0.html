@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        ul { list-style: none; }
+        a { text-decoration: none; font-weight: bold; }
+        #result { height: 300px; color: #ccc;  }
+    </style>
+</head>
+<body>
+    <ul>
+        <li><a href="#" id="first_a">Green</a></li>
+        <li><a href="#" id="second_a">Orange</a></li>
+        <li><a href="#" onclick="changeBg('purple');">Purple</a></li>
+    </ul> 
+    <div id="result"></div>
+    <script>
+
+        const resultDiv = document.querySelector('#result');
+        function bindFn() {
+            // 익명함수 사용.
+            return function(){
+                resultDiv.style.backgroundColor = 'orange';
+            }
+        }
+        const secondA = document.querySelector('#second_a');
+        secondA.onclick = bindFn();
+        // bindFn()의 함수 주솟값을 가지고 와야하므로, bindFn() 함수안에는 함수의 값을 리턴한 값이 필요함.
+        // onclick은 함수 바운딩이 됨.
+        
+        /*
+        // 이건 즉시실행방법
+        function bindFn() {
+                return (function () {
+                    resultDiv.style.backgroundColor = "orange";
+                })();
+            }
+        */
+
+        function bindAn() {
+            // arrow 방식 사용
+            return () => {
+                resultDiv.style.backgroundColor = 'green';
+            }
+        }
+        const firstA = document.querySelector('#first_a');
+        firstA.onclick = bindAn();
+
+        // Purple로 바꿔보기
+        function changeBg() {
+            return (function(color) {
+                resultDiv.style.backgroundColor = color;
+            })();
+        }
+    </script>
+</body>
+</html>

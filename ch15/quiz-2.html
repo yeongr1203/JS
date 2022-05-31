@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+
+        //두 수를 입력받아 크기를 서로 비교하여 더 큰 숫자를 알림창(alert)에
+        // 표시하는 함수를 작성하고 실행해 보세요.
+        // 만약 같은 값이면 > 숫자가 같습니다.
+        // 예) 1과 5를 입력 > 5(이)가 1보다 큽니다.
+
+        // const n1 = Number(prompt('값 1'));
+        // const n2 = Number(prompt('값 2'));
+        // function viweNum(n1,n2){
+        //     if ( n1 > n2 ){
+        //         alert(`${n1}(이)가 ${n2}보다 큽니다`);
+        //     } else if ( n2 < n1) {
+        //         alert(`${n2}(이)가 ${n1}보다 큽니다`);
+        //     } else {
+        //         alert(`숫자가 같습니다.`);
+        //     }
+        // }
+        // viweNum(n1,n2);
+
+ 
+        //선생님 풀이 
+        // isNaN은 오로지 숫자로만 되어 있는지 확인하는것. 아닐때를 뜻함.
+        // 아래 함수명을 즉시호출함수로 변경한 것.
+        (function() {
+            const n1 = Number(prompt('값 1'));
+            const n2 = Number(prompt('값 2'));
+            // 숫자 아닌 것 넣었을때!
+            if(isNaN(n1) || isNaN(n2) || n1 === 0 || n2 === 0 ) {
+                alert('숫자를 입력해주세요.');  
+                return;
+            }
+            // 값 비교조건
+            function alertDiffNum(n1,n2){
+                if(n1 === n2) {
+                    alert('숫자가 같습니다.');
+                    return;
+                }
+                const bigNum = n1 > n2 ? n1 : n2;
+                const smallNum = n1 < n2 ? n1 : n2;
+
+                alert(`${bigNum}(이)가 ${smallNum}보다 큽니다.`);
+            }
+            alertDiffNum(n1,n2);
+        })();
+    </script>
+</body>
+</html>

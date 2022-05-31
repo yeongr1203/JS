@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        ul { list-style: none; }
+        a { text-decoration: none; font-weight: bold; }
+        #result { height: 300px; color: #ccc;  }
+    </style>
+</head>
+<body>
+    <div id="result">
+        <ul>
+            <li><a href="#" id="first_a">Green</a></li>
+            <li><a href="#" id="second_a">Orange</a></li>
+            <li><a href="#" onclick="changeBg('Purple')">Purple</a></li>
+        </ul>
+    </div>
+    <script>
+        const resultDiv = document.querySelector('#result');
+
+        // 아래 풀이는 파라미터를 받아야하는 것.
+        function changeBg(color){                       // 색 변경하는 color라는 이벤트 객체를 준것.
+            resultDiv.style.backgroundColor = color;    // color는 이벤트를 받아서 넘기는 것.
+        }
+        
+        // id가 second_a라는 애한테 적용시킬 스타일 함수
+        function changeOrange() {
+            resultDiv.style.backgroundColor = 'orange';
+        }
+
+        // id가 first_a라는 애한테 changeBg(color)함수를 적용시키고 싶을 때,
+        // 익명함수를 만들고 firstA를 호출해서 쓴 것과 같음.
+        const firstA = document.querySelector('#first_a');
+        firstA.onclick = function(){                        // onclick에 = 해서 줘야하는 건 함수(주솟값)을 줘야함.
+            changeBg('green');
+        }
+        
+        firstA.onclick = () => changeBg('green');   // 이 익명함수는 내가 임의로 한 것. 그래서 익명함수만으로는 재사용이 불가함.
+        // 
+        
+        /*
+            firstA.onclick = function(//필요한 이벤트 객체(총정리된이벤트객체를 넣어준다), 받을꺼다 하면 적어주고 아니다 하면 비워두면 됨.){                        // onclick에 = 해서 줘야하는 건 함수(주솟값)을 줘야함.
+                changeBg('green');
+            }
+        */
+
+        // id가 second_a라는 애한테 changeOrange함수를 적용시킨 방법.
+        const secondA = document.querySelector('#second_a');    
+        secondA.onclick = changeOrange;                     // 파라미터가 없는 함수(주솟값)을 줬음.
+        // 이벤트객체를 사용하지 않으면 바로 함수명만 적기.
+
+        // onclick에 이벤트 객체가 들어갔다면 함수의 파라미터자리 이벤트객체를 넣어준다. 
+    
+
+    /*  이벤트 객체란? 사용방법
+
+        // 아래 함수는 color라는 이벤트 객체를 넣어준것. 
+        function changeBg(color){                       
+            resultDiv.style.backgroundColor = color;    
+        }
+
+        // onclick 에 이벤트함수가 든 함수명을 호출할 경우,
+        const secondA = document.querySelector('#second_a');    
+        secondA.onclick = changeBg; 
+        // 즉, resultDiv.style.backgroundColor = 'orange'; 로 작성되지 않으면 문자열이 없고, 이벤트 객체만 넘어오기 때문에 undefined가 됨
+
+        // 그래서 올바르게 할 경우.
+        const secondA = document.querySelector('#second_a');   
+        function changeOrange() {
+            resultDiv.style.backgroundColor = 'orange';
+        }
+        secondA.onclick = changeOrange; 
+    */
+    </script>
+</body>
+</html>

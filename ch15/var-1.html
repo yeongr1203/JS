@@ -8,11 +8,12 @@
 </head>
 <body>
     <script>
-        function addSum() {
+        var sum;    // 전역변수.
+        function addSum() {     // 선언부
             var sum = 10 + 20;
         }
-        addSum();       //호출되었지만 호출되지 않음.
-        console.log(sum);
+        addSum();           //호출되었지만 호출되지 않음.   
+        console.log(sum);   // 제일 가까운 sum변수 값을 적용됨.
         // 호이스팅은 자신을 감싸고 있는 중괄호까지만 허용.
         // function안에서 선언된 함수가 function밖까지 호이스팅이 되지 않는다.
 

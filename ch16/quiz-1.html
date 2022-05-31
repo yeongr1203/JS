@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>현재 시각</title>
+</head>
+<body>
+    <p>현재 시각 <span id="current" class="display"></span></p>
+    <script>
+        let cnt = 0;
+        // setTimeout(displayNow, 1000);
+        setInterval(displayNow, 1000);      // 1초마다 호출.
+        // 매 초마다 실행. = setInterval
+        // setInterval(function() {
+        //     console.log(cnt++);
+        // }, 1000);
+        
+        // 한 번만 실행 = setTimeout
+        // setTimeout(function() {
+        //     console.log(cnt++);
+        // }, 1000);
+        // const now = new Date();
+        // console.log(now);
+
+        // <!-- 문제 결과 : 현재 시각 오후 4:44:39 (시간은 계속 올라감.) -->
+        function displayNow() { 
+            setInterval(function(){
+                const now = new Date();
+                let hours = now.getHours()   // 출력하면 17
+                let half ;
+                if( half <= 12) {
+                    half = '오전';
+                } else {
+                    half = '오후';
+                    hours -= 12
+                }
+                let minutes = ('0' + now.getMinutes()).slice(-2);
+                let Seconds = ('0' + now.getSeconds()).slice(-2);
+
+                const currentTime = half + ' ' + hours + ':' + minutes + ':' + Seconds ;
+                document.querySelector('#current').innerText = currentTime;    
+            })
+
+            // const currentTime = '';
+            // document.querySelector('#current').innerText = currentTime;
+
+            // document.querySelector('#current').innerText = "<b>안녕</b>"
+            // = 은 대체일뿐, 추가가 아니다.
+
+            // document.querySelector('#current').append("<b>안녕</b>");
+            // append는 추가되는 것.
+        }
+
+        // 선생님풀이
+        function displayNow() { 
+            setInterval(function(){
+                const now = new Date();
+                /*
+                const hour = now.getHours();
+                const min = now.getMinutes();
+                const sec = now.getSeconds();
+                */
+                const currentTime = now.toLocaleTimeString();
+                document.querySelector('#current').innerText = currentTime;    
+            })
+        }
+    </script>
+
+</body>
+</html>

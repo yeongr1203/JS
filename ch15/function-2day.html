@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+        (function() {
+
+        });
+        // 이름이 같더라도 라이브러리 영역(스코프=살아있는 범위)이 달라서 중복으로 들어갈 수 있음.
+        
+        // p.536
+        // 아래 함수와 풀이의 차이점 => 이름이 있고 없고의 차이
+        (function(val) {
+            document.write(`val : ${val}<br>`);
+        })(10);
+        
+        // 풀이
+        let dd = function(val) {
+            document.write(`val : ${val}<br>`);
+        }
+        dd(10);
+
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 상수는 한번 준 값은 변하지 않는다.
+        // arr에는 주솟값이 저장이 된다. 주솟값만 안바뀐다면 const가 유지된다.
+        const arr = ['A','B','C'];
+        /*
+        arr = [];       // 에러터짐. 이유는 앞에 상수라 값이 변경이 될 수 없기때문에 다시 정의하는 것은 불가.
+        console.log(arr);
+        // 주솟갑에 접근해서 하는것은 괜찮음.
+        arr.push('D');  // 배열에 접근했지만 공간을 늘린것이지 주솟값이 변경된 것은 아님.
+        console.log(arr);
+        */
+        //concat은 이 배열과 저배열을 합칠때 사용.
+        const arr2 = arr.concat(['D','E']);  // 방식 1   //arr 뒤에 붙이기.
+        const arr3 = arr.concat(arr2);
+        console.log(arr3);
+        console.log(arr2);
+        console.log(arr);
+        console.log(['D','E'].concat(arr));  // 방식 2   //arr앞에 붙이기
+        //console.log(arr2.concat(arr));  // 방식 2번과 동일한 결과. 이렇게 사용할 수 있다.
+        // 타입은 배열.
+
+        // Spread Operator => ... 연산자를 뜻함.
+        const arr4 = [...arr, ...arr2];     // ...을 빠지만 배열안에 배열이 들어가게 됨 => [Array(3),Array(2)] 가 나옴.
+        // ...을 하면 arr에 있는 각 배열들이 합쳐져서 나열된다. => [ 'A', 'B', 'C', 'D', 'E'] 이렇게 나타남.
+        console.log(arr4);
+    </script>
+</body>
+</html>
+<!-- 
+    
+ -->

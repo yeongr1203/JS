@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <ul>
+        <!-- 1번 li의 a태그에 onclick을 주지 말것, a태그링크에 #이 붙었을때, #은 id값을 줄때 쓰는것이므로 #붙은 페이지로 이동될 수 있음. -->
+        <li><a href="https://www.naver.com" onclick="alert('Green 클릭');">Green</a></li>
+        <!-- event.preventDefault()는 앞에 있는 이벤트를 실행시키지 않음. -->
+        <li><a href="https://www.naver.com" onclick="event.preventDefault(); alert('Green 클릭');">Orange</a></li>
+        <li><a href="#" onclick="alert('Purple 클릭');">Purple</a></li>
+    </ul>
+    <!-- 
+        a태그에 onclick주지말고 button에 주기. 
+        a태그에 #을 주는데, 잘못하면 쿼리스트링과 함께 꼬일수있음 
+    -->
+</body>
+</html>

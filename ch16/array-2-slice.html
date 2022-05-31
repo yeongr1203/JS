@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 
+        slice란? 특정부분을 잘라내어 배열로 만듬.
+        특징 : 스타트되는 인덱스 번호부터 적인 인덱스 값의 앞까지 해당됨. 원본은 건들지않음.
+     -->
+    <script>
+        //2번부터 2개만 뽑고싶다.
+        const sIdx =2;  //2부터 스타트
+        const arr=[10,20,30,40,50,60];
+        // const resultArr = arr.slice(sIdx, sIdx + 3);    // 스타트 인덱스 2번인덱스부터 3개까지 뽑아보고싶다.라는 뜻.
+        const resultArr = arr.slice(2,4);    // 4번전까지 2개 선택.
+        // const resultArr = arr.slice(3);         // 양수일때는 인덱스
+        // const resultArr = arr.slice(-3);        // -3은 뒤에서 부터 자르겠다. -때는 갯수.
+        console.log(resultArr.toString());
+        console.log(arr.toString());
+        // 원본은 건들지 않는다!
+        console.log(arr.toString());
+        
+    </script>
+</body>
+</html>

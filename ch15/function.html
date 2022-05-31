@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // p.536
+        /*
+        function() {
+            document.write('실행<br>');
+        }
+        을 호출하려면 변수에 익명함수를 주고 아래처럼 해야함.
+        let a = function() {
+            document.write('실행<br>');
+        }
+        a();
+        */
+        /*
+        // 객체실행 함수. 즉,  변수 주지 않고, 바로 실행할 수 있게 하는 방법 
+        (function() {
+            document.write('실행<br>');
+        })();
+        // ()는 호출을 뜻함.
+        */
+
+        // 이건 익명함수를 변수에 준 것이 아니라, 그냥 함수.
+        let fn1 = (function() {
+            document.write('실행<br>');
+        })();
+        console.log(fn1);
+
+        // 숫자를 주려면
+        (function(val) {
+            document.write(`val : ${val}<br>`);
+        })();
+
+        // 답
+        (function(val) {
+            document.write(`val : ${val}<br>`);
+        })(10);
+        
+        // 풀이
+        let dd = function(val) {
+            document.write(`val : ${val}<br>`);
+        }
+        dd(10);
+    </script>
+</body>
+</html>

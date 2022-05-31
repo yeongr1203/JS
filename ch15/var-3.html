@@ -13,15 +13,18 @@
             console.log(` x is ${x}`);
             console.log(` y is ${y}`);
             var y = 20; // 찍어보면 y is undefined 로 뜨는데, 이유는 호이스팅 떄문.
-            // 호이스팅이 var = y;까지는 올라가는데, 20이라는 값까지 올라가지 않기 때문에
+            // 호이스팅이 var = y;까지는 올라가는데 (변수생성은 됨), 20이라는 값까지 올라가지 않기 때문에(값이 없음)
             // 변수선언만 된 상황. 그래서 undefined로 나타남. 
             /*  아래와 같음.
                 var y;
                 console.log(` x is ${x}`);
                 console.log(` y is ${y}`);
+                y = 10;
             */
-           //cons 와 let 을 var대신 사용.
-           // 
+           
+           //const 와 let 을 var대신 사용.
+           // const 는 상수, 값이 변할 수 없어서 변하는 변수에 사용이 불가능함.
+           // let 은 값을 변할수 있는 변수에 사용이가능. 대부분 let으로 사용.
         }
         displayNumber();
         // 모든 변수들은 내가 들어있는 {중괄호}까지 허용.

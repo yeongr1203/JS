@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        Math.PI = 1.1;  // 값을 바꿔도 바뀌지 않음. 원주율은 바뀌지 않음.
+        console.log(Math.PI);   // math 안에 PI = 프로퍼티가 있는데, 원주율 = PI :: 상수
+
+        console.log(Math.ceil(12.1));   // ceil = 올림
+        console.log(Math.round(12.1));   // round = 반올림
+        console.log(Math.round(12.5));   // round = 반올림
+        console.log(Math.floor(12.9));   // floor = 내림(버림)
+        console.log(Math.random());     // 랜덤한 값을 만들어 낼때 사용.
+        console.log(Math.random());     // 절대 1은 나오지 않음. 0과 1사이의 무작위수. 절대 1이 나오지 않음.
+
+        // 0~9사이 랜덤한 값을 만들어 내고 싶을때
+        // const rVal = parseInt(Math.random() * 10);  // parseInt는 정수형으로 바꾸려고
+        // 정수 10은 안나옴.
+
+        // :: 9 - 0 > 9 + 1 
+        const rVal = Math.floor(Math.random() * 10);
+        // floor는 버림. 
+        // random() 0.000... ~0.99999... 를 뜻함. 1이 안됨.
+        // 0부터 9까지 랜덤 값을 구하기 위해 10을 곱하면 0부터 9.999 까지 나오는데, floor로 뒷자리는 버리기때문에 9가 나옴.
+        console.log(rVal); 
+
+        // Q. 1 ~ 9 까지 랜검한 값을 나타내기.
+        // :: 1이 시작이기 때문에 무조건 +1
+
+        // :: 0~8나오게 하고 +1을 해주면 됨. 
+        const rVal2 = Math.floor(Math.random() * 9 ) +1 ;
+            // floor는 버림. 
+            // random() 0.000... ~0.99999... 를 뜻함. 1이 안됨.
+            // random()에 9를 곱하면 0*9 는 0, 0.9999 *9 는 8.1...이 나옴 
+            // 결과에 +1 씩 더하면 1부터 시작~ 9까지... 뒷자리는 버림.
+        console.log(rVal2);
+        // 내가 출력값이 잘 나오고 있는게 맞는지 확인 하기 위해서 작성함.
+        // 무한루트가 돌면 맞는것.
+        // 잘 못만들었음 뜨면 답이 아닌것. 
+        // while(true) {                    
+        //     if(rVal2 < 1 || rVal2 > 9 ){
+        //         console.log('잘 못 만들었음!!');
+        //         break;
+        //     }
+        // }
+
+        // 10~ 20  :: 0~10 + 10     :: 20-10 > 10+1
+        const rVal3 = Math.floor(Math.random() * 11 + 10) ;
+        console.log(rVal3);
+
+        // 25~50 랜덤 숫자      :: 0~25 + 25        :: 50-25 > 25 + 1
+        const rVal4 = Math.floor(Math.random() * 26 ) +25;
+        console.log(rVal4);
+
+        // 25~40        :: 0~15 +25     :: 40-25 > 15 + 1
+        const rVal5 = Math.floor(Math.random() * 16 ) + 25;
+        console.log(rVal5);
+
+
+
+    </script>
+</body>
+</html>

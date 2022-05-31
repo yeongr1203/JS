@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function sum(n1,n2){
+            document.write(`더하기 : ${n1+n2}<br>`);
+        }
+        
+        let minus = function(n1,n2){
+            document.write(`빼기 : ${n1-n2}<br>`);
+        }
+        /* 바로 위에 있는 함수랑 동일. 
+
+        function minus(n1,n2){
+        document.write(`빼기 : ${n1-n2}<br>`);
+        }
+        */
+
+        let fn = sum;   // 주소값만 복사되서 옴.
+        fn(22,11);
+        sum(22,11); // fn(22,11); 과 동일 => fn=sum이기 떄문에 같은 function을 가르키고 있기 때문.
+        
+        minus = sum;    // minus에 sum과동일하다로 했기 때문에 minus함수를 불러올수가 없게 됨.        
+        fn = minus;
+        fn(22,11);
+    </script>
+</body>
+</html>

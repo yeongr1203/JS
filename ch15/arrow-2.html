@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 에로우함수 기능 알아보기 -->
+    <script>
+        //arrow 2가지는 외부에서는 값을 하나도 받지 않고, 결과값 10만 받음. 즉, console에서 10이 찍힘.
+        const arrow = () => {
+            return 10;          //리턴값받음
+        }
+        // 1줄만 작성(2줄이 되면 중괄호가 필요하므로, 중괄호를 빼기위해 1줄만 작성.)
+        // --(값을 리턴할 것인데,) return키워드가 생략이 가능하다.
+        // 중괄호 생략
+        // 값을 리턴!
+        // 즉, 1줄로만 작성되고 중괄호가 없을때, 리턴을 적지 않아도 자동으로 리턴됨. 
+        const arrow2 =() => 10;             //리턴 값 받지않음
+        const sum = (n1, n2) => n1 + n2;
+
+        // -- 파라미터 소괄호 생략 가능.
+        // 파라미터가 1개일 때만!
+        const doubleVal = n1 => n1 * n1;
+
+
+        // 두 개 다 출력값이 똑같이 나옴.
+        console.log(arrow());           
+        console.log(arrow2());
+
+        console.log(sum(10,20));
+        console.log(sum(100,120));
+
+        console.log(doubleVal(5));
+
+
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        const now = new Date();         // Date객체가 생성. 날짜는 만들어지는 시간!
+        console.log(now.toString());
+        console.log(now);           // 현재 날짜 정보 시간 new Date만들어질 시기를 알려줌.
+        // console.log(now); 는 내가 toString을 찍지 않아도 자동으로 console.log(now.toString())으로 호출해서 출력해줌.
+        // 배열이 아닌 것은 console.log(now.toString())으로 호출해서 찍어준다. 
+        // 자신의 값을 문자열로 표현해주는 메소드 = toString
+        
+        console.dir(now);
+        // 배열로 찍어주는것. 안에 내용을 상세하게 보여주는 것.
+        
+        // const date1 = new Date('2020-05-30');   // 날짜만 찍으면 9시가 디폴트값으로 나타남.
+        const date1 = new Date('2020-05-30 01:00:20');      // 시간까지 나타남. 
+        console.log(date1);
+
+        // console.log에서 나타나는데, 검정색은 문자열, 파란색은 숫자.
+        date1.setFullYear(2021);
+
+        // 연도 4자리 숫자로 설정
+        console.log(date1.getFullYear());
+        // 0부터 시작해서 +1로 해준다. 월 설정. 
+        console.log(date1.getMonth() + 1);
+        // 날짜 설정.
+        console.log(date1.getDate());
+        // 요일설정.    // 일~토,    0:일요일, 1: 월요일
+        console.log(date1.getDay());
+        // 1970년 1월 1일 자정 이후의 시간을 밀리초로 설정.
+        console.log(now.getTime());
+        // 현재시간의 시
+        console.log(now.getHours());
+        // 현재시간의 분
+        console.log(now.getMinutes());
+        // 현재시간의 초
+        console.log(now.getSeconds());
+        // 초를 밀리초를 설정. (밀리초 : 1초를  1/1000로 나누는 것.)
+        console.log(now.getMilliseconds());
+
+    </script>
+</body>
+</html>
+<!-- 
+    :: 최종
+    객체에는 class 아래 memberfiled -> membermethod 순이다.
+    멤버필드와 멤버메소드가 있다.
+    멤버필드는 은닉화 되어 있어 메소드를 통해서 값은 넣고 빼는 작업을 하는 데, 
+    이런 작업을 하는 친구를 게터, 세터라고 함.
+    FullYear => 멤버필드의 값을 가져오고 싶을땐, getFullYear, 값을 수정하고 싶을 땐 setFullYear로 사용.
+    
+    -----------------------------------------------------------
+
+    멤버필드의 값을 직접적으로 줄수없게 함. 은닉화(캡슐화)
+    객체를 나혼자 사용하면 괜찮음. 백엔드처럼 나눠서 사용하는데, 그때 값이 변경되면 안되기 때문에.
+    멤버메서드는 순서가 쌓인다.하나가 끝나면 그다음하나가 실행됨.
+    
+    즉, 멤버필드의 값은 다이렉트로 접근할수 없게 은닉화(캡슐화) 시키고, 꼭 메서드를 통해서 통로를 만들고 변경하고 빼내고 한다.
+    메소드를 통해서 통로를 만들어 값을 받고 사용할 수 있는데, 이때 
+    멤버필드의 값을 받을 때, get(getters)  ==> 외부로 줄 때
+    멤버필드의 값을 쓸 때, set(setters) ==> 외부에서 받아서 쓸 때
+    게터, 세터 사용해 은닉화시켜 변경하면 순서가 바뀌지 않고 잡히기 때문에 값이 변하지 않음.
+
+
+    자바에서는 console에 찍으려면 toString을 무조건 사용해야 찍힘.
+-->

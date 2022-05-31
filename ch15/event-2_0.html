@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        ul { list-style: none; }
+        a { text-decoration: none; font-weight: bold; }
+        #result { height: 300px; color: #ccc;  }
+    </style>
+</head>
+<body>
+    <div id="result">
+        <ul>
+            <li><a href="#" id="first_a">Green</a></li>
+            <li><a href="#" id="second_a">Orange</a></li>
+            <li><a href="#" onclick="changeBg('Purple')">Purple</a></li>
+        </ul>
+    </div>
+    <script>
+        const resultDiv = document.querySelector('#result');
+
+       
+        function changeBg(color){                       
+            resultDiv.style.backgroundColor = color;    
+        }
+        
+
+        function changeOrange() {
+            resultDiv.style.backgroundColor = 'orange';
+        }
+
+        const firstA = document.querySelector('#first_a');
+        firstA.onclick = function(e){                       
+            changeBg('green');
+        }
+
+        // const secondA = document.querySelector('#second_a');    
+        // secondA.onclick = changeBg('orange');   
+
+        function bindFn(){
+            
+        }
+
+        const secondA = document.querySelector('#second_a');    
+        secondA.onclick = bindFn();           
+        
+        //  secondA.onclick = 값 => 속성
+        //  secondA.onclick = 함수 => 메소드
+
+    </script>
+</body>
+</html>

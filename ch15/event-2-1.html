@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 객체를 배우지 않았지만 설명을 위해 넣어주심. -->
+    <!-- 객체를 쉽게 만드는 것이 자바스크립트 -->
+    <script>
+        /*
+            객체란.
+            const obj = {
+                name ='ooo',        // 속성
+                run: function(){    // 메소드
+                },              // 속성명 : 함수 => 메소드
+            }
+        */
+        const obj = {
+            // name ='ooo',        // 속성
+            // run: function(){    // 메소드
+            // },              // 속성명 : 함수 => 메소드
+            onclick: null   // 속성명 : 값 => 속성
+        }
+        // obj을 클릭당했을 때 함수가 실행되도록 연결시켜줌. 클릭안됬을때 obj는 undefined였을 것.
+        obj.onclick = function(e) {
+            console.log(e);         //  파라미터에 e값을 주고, console을 찍으면, console에서는 undefined로 나옴. 
+            // undefined가 나온 이유? 함수 밖에서 호출해준 onclick에 파라미터e가 없어서 호출할 값이 없어서 undefined가 나옴.
+            document.write('dd');
+        }
+        // obj.onclick();
+        const e = {
+            'target' : '누구당',
+            x: 128,
+            y: 1111
+        };
+        obj.onclick(e);
+
+
+    </script>
+</body>
+</html>

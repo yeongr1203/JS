@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 자바스크립트에서 함수는 1급객체!! => 메소드를 변수에 담을 수있음.(자바는 담을 수 없음.)
+        // const=상수
+        // ★ 아래 내용의 요점 : 변수에 함수를 담을 수 있다. 
+        //function 앞에 = 가 있으면 function의(익명함수) 접근할 수 있는 주솟값을 주는것과 같다.
+        const sum = function(a,b){      // 익명함수  // function(a,b) {}의 주솟값을 sum에 넘겨줌.
+            return a + b;   // 간결하게 쓸 수 있다.
+            // 풀어서 쓴다면.
+            // sum = a+b;
+            // return sum;
+        }
+        const result = sum(10,20);  //  호출한 결과 값이 30을 result에 준것.
+        document.write(`result : ${result}<br>`);
+
+        const fn = sum; // fn호출은 sum의 접근할수있는 주솟값만 복사되서 fn으로 준 것.
+                        // 익명함수를 가짐.fn과 sum모두 같은 익명함수를 가지고 있음.
+        // 만약 fn에 새로운 익명함수를 넣어준다면
+        fn = function(a, b){
+            return a*b;
+        }
+        const result2 = sum(10,20);
+        document.write(`result : ${result2}<br>`);
+    </script>
+</body>
+</html>
+<!-- 익명함수
+
+
+
+ -->

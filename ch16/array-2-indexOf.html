@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Array_indexOf</title>
+</head>
+<body>
+    <!-- 
+        indexOf 란?
+        arr 배열에서 왼쪽에서부터 찾는데 찾는 배열값의 인덱스 번호를 찾는 것.
+     -->
+    <script>
+        const arr = [1,2,3,4,5,4,3,2,1];
+        const idx = arr.indexOf(3);         //indexOf는 3의 인덱스 번호를 뜻함.
+        console.log(idx);  
+        
+        // 반대로 끝에서 부터 순서시작. 즉, 뒤에서부터 순서세기
+        const lastIdx = arr.lastIndexOf(3);
+        console.log(lastIdx);
+
+        const fileNm = 'abcdef.fff.jpg';    // 문자열로 되어 있지만 즉, 문자배열/ 각 배열이 방이 있다.
+        const lastDotIdx = fileNm.lastIndexOf('.'); 
+        console.log('lastDotIdx : ' + lastDotIdx);  
+
+        // 점의 위치를 알아야 확장자 알 수 있어서 확장자를 뽑아낼 때 사용.
+        // 값의 유무를 확인 할 때 확인가능. 없는 값일 경우는 -1, 있는경우 1부터 나타남.
+        
+
+        // includes는 값이 있는지 없는지 알고 싶을때는 indexOf보다 includes를 사용하는 것이 좋다.
+        a
+    </script>
+</body>
+</html>
