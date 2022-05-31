@@ -1,0 +1,41 @@
+20220428 - 다음글 이전글 버튼 추가 및 현재 위치 표시
+
+//이전글 다음글 버튼
+-Heidi에서 현재 있는 i_board값의 이전 i_board값과 다음 i_board값을 구하는 쿼리문 작성
+(이때 단순히 +1 -1을 하게되면 삭제시에 i_board값이 적용이 안됨)
+
+->최신글(다음글) 예를들어 i_board가 110이면 111이 나오게 쿼리문 작성(삭제시에 더 높을 수 있음)
+SELECT i_board FROM t_board		//t_board테이블에서 i_board 값을 찾아라
+WHERE i_board > 110		//어떤 i_board 값이냐면 내가 구하려는 i_board값보다 큰 값
+ORDER BY i_board			//내가 구하려는 i_board값보다 큰값을 오름차순(110과 가장 가까운 값이 맨위에 가도록 정렬)
+LIMIT 1				//정렬된 수에서 가장 위의 값 1개를 가지고 온다(110과 가장 가까운 값)
+
+->지난글(이전글) 예를들어 i_board가 110이면 109이 나오게 쿼리문 작성(삭제시에 더 낮을 수 있음)
+SELECT i_board FROM t_board
+WHERE i_board  < 110
+ORDER BY i_board DESC
+LIMIT 1
+
+
+-db_board.php	: sel_prev_board(이전글), sel_next_board(다음글) 구현
+	>위에 작성한 쿼리문으로 다음글과 이전글의 i_board값을 구해서 i_board값을 리턴하는 함수를 만든다.
+	>이때 i_board가 존재 하지 않을 경우(가장 첫 글 또는 가장 마지막 글) 0을 반환하도록 구현
+
+
+-detail.php
+	>구현한 sel_prev_board(이전글), sel_next_board(다음글) 함수 호출해서 다음글, 이전글로 이동하는 버튼 생성
+	>이동시에 이전글, 다음글 의 i_board값을 같이 전달해 주어야한다.
+
+
+//현재 위치한 페이지 표시
+-list.php
+	>내가 위치한 페이지가 페이지를 표시하는 $i값과 같을때 CSS를 적용되도록 class(pageSelected)를 적용 시킨다.
+
+
+-common.css
+	>a태그에 밑줄 없애고 글색은 검정색 적용
+	>현재 위치한 페이지에 표시할 색 지정 (	.pageSelected)
+
+
+//막히면 언제든지 물어보기 혼자 끙끙 거리지말기!!!
+

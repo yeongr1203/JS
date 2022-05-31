@@ -1,0 +1,91 @@
+// 220524_수업
+<오전>
+나중에 페이징에 페이징 기법을 해 볼 예정, 방법은 여러가지....
+다음에 보여주신다 하셨음.
+페이징의 페이징 => 디시인사이트(15개씩 나오는데, 다음을 넘기면 또 나오고 하는것. 즉  ,1페이지에 15, 2페이지에 16에서 30) 이렇게 나옴.
+
+-----------------
+** 페이징은 실수는 무조건 다 올려줘야함... 그래서 ceil을 사용하는 것.
+
+$paging_count = sel_paging_count($param);  이 함수를 가져와서 필요한 숫자가 몇인지 가지고 옴.
+
+$page = 1;  //디폴드값은 1로 함.
+if(isset($_GET["page"])) {  
+    $page = intval($_GET["page"]);  // intval을 해서 정수형으로 바꿈.
+	-> $page = intval("1");  -- 넘어온 페이지 값이 없으면 1이 찍힘.
+} 
+//if문으로 넘어온 페이지가 있는지 확인, 넘어오면 그 값을 정수로, 없으면 디폴드값인 1페이지로 옴.
+
+$row_count 는 한페이지당 넘어올 페이지 수.
+
+DB의 sel_paging_count($param) 자리.
+$param으로 보낸 {$param["row_count"]} 로우카운트 값을 받아옴.
+limit 작성.
+
+리스트 페이지에서 limit값을 받아와야하므로 파람에 담아준다.
+** 인덱스 계산법 : ($page-1) * $row_count
+
+** str_replace (바꾸려는것, 바꿀내용, FROM) => replace가 들어가면 한번이 아닌 그 바꾸려는 것을 전체( 모두) 바꿔줌.
+
+
+--------------------
+레이아웃 열
+
+evenly : 컬럼과 컬럼 사이 일정한 공간을 둠.
+between : 양끝으로 붙고 사이에 공간을 둠
+
+
+
+
+--- 여백유틸리티	// 
+ms => margin start 를 뜻함.
+
+
+-- 거터
+
+g-x =>위 아래,
+g-y=> 오른쪽 왼쪽
+g=> 양쪽
+
+--- 여기까지 깃에 올려주심
+
+
+-- Z-index
+z-index css // 참조 사이트 : https://www.w3schools.com/cssref/pr_pos_z-index.asp
+z-index 진실 // 참조사이트 : https://mytory.net/archives/10997
+예를 들어 포토샵 레이어...
+
+포지션이 static이면 안됨.
+포지션 속성이 지정되지 않은 요소에 z-index를 지정해도 먹히지 않는다.
+z-index 값이 같으면 뒤에 있는 것이 더 위로 올라오고
+z-index값이 다르면 숫자 높은 것이 더 위로 올라옴
+
+
+---------
+
+포지션 : absolute; => static 이 아닌 모든것(부모)
+
+
+mx-auto => margin: 0 auto;
+img태그는 inline태그
+img태그에 인라인일때, margin: 0  auto; 안 먹힘, 디스플레이 블락처리하고 margin주면 먹힘.
+
+
+
+html picture 태그 // http://www.tcpschool.com/html-tags/picture
+픽썸 // https://picsum.photos/ => 밑에 주소에 이미지 사이즈만 변경하면 랜덤으로 나옴.
+
+
+
+게시판2할때는 중단점 먼저 폼을 한 번 잡아주신다고 하셨음.
+
+
+
+view.js  
+
+
+
+라라벨은 마지막에 할 예정 => 스프링?과 비슷함.
+
+
+

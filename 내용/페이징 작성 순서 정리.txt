@@ -1,0 +1,54 @@
+// 페이징 순서
+
+먼저 페이지당 몇개씩 나타내고 싶은지 체크 -> 반올림해서 나타낼 것.
+count는 그룹함수다. 왜냐면 테이블에서 조건을 만족하는 행의 개수를 반환하는 함수이기 때문에.
+
+SELECT CEIL(COUNT(i_board) / 5 ) as cnt
+FROM t_board;
+ => ceil(count(i_board)) 를 cnt로 컬럼명 변경
+=> 총 cnt / 총 몇페이지인지 확인.
+count를 쓴 만큼 group by는 작성하지 않았지만  group by가 포함되어 있음.
+
+==== DB작성
+1. db_board.php 에 작성
+1-1 작성.
+function sel_paging_count() {
+	$sql = " SELECT CEIL(COUNT(i_boar)) / 10(1페이지당 몇개인지 숫자) FROM t_board;
+	$conn = get_conn();
+	$result = mysqli_query($conn, $sql);
+	mysqli_close();
+	$row = mysqli_fetch_assoc($result);
+	return $row['cnt'];
+1-2 작성.
+
+function sel_paging_count() {
+	$sql = " SELECT CEIL(COUNT(i_boar)) / 10(1페이지당 몇개인지 숫자) FROM t_board;
+	$conn = get_conn();
+	$result = mysqli_query($conn, $sql);
+	mysqli_close();
+	$row = mysqli_fetch_assoc($result);
+	return $row['cnt'];
+
+
+2. 
+== list.php 파일 작업 
+
+1. list에서 페이징 함수 불러오기
+    $paging_count = sel_paging_count();  // ()값이 없는 이유는 모두에서 불러오기때문에 없음. 
+
+    $row_count = 10; 	// 10개 = 1페이지
+    $param = [ 
+	" 
+	];
+
+
+
+
+
+
+
+
+
+
+
+
