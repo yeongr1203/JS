@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS속성에 접근하기_p.618</title>
+    <style>
+        #rect { width: 300px; height: 300px; border: 1px solid #000;}
+    </style>
+</head>
+<body>
+    <div id="rect"></div>
+    <script>
+        const divRect = document.querySelector('#rect');
+        divRect.addEventListener('mouseover', function(){
+            this.style.backgroundColor = 'green';   // css로 하고 싶다면 객체주소값.style로 하면됨.
+            this.style.borderRadius = '50%';
+        });  
+        
+        divRect.addEventListener('mouseout', function(){
+            this.style.backgroundColor = null;  // '' 빈칸 아니면 null을 주면 됨. undefined는 안됨.
+            this.style.borderRadius = null;
+        });  
+    </script>
+
+</body>
+</html>

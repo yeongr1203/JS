@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        html, body { height: 100%; }
+        ul { list-style: none; }
+        li { display: inline-block; }
+        .pic { width: 200px; cursor: pointer;}
+        #lightbox { 
+            height: 100%; width: 100%; background-color: #00000088;                    
+            display: none; 
+            justify-content: center; 
+            align-items: center; 
+            position: fixed; 
+            left:0; top:0; }
+        #lightbox > img { border: 2px solid #fff;}
+
+    </style>
+</head>
+<body>
+    <div class="row">
+        <ul>
+            <li id="rowImg"><img class="pic" src="https://blog.kakaocdn.net/dn/TGLku/btrgDUCIkBI/ppowIbObTYU9uVXjnTKbO0/img.png"></li>
+            <li id="rowImg"><img class="pic" src="https://img.insight.co.kr/static/2021/09/30/700/img_20210930094957_0o5r1272.webp"></li>
+            <li id="rowImg"><img class="pic" src="https://blog.kakaocdn.net/dn/bq36GL/btrgAJv4NJO/rv1K2LmMat5hneAk6vKpZk/img.png"></li>
+        </ul>
+    </div>
+
+    <div id="lightbox">
+        <img src="" id="lightboxImage">
+    </div>
+
+    <script>
+        const lightbox = document.querySelector('#lightbox');
+        const lightboxImage = document.querySelector('#lightboxImage');
+        // const rowImg = document.querySelectorAll( '#rowImg > img');
+        const pics = document.querySelectorAll('.pic');  // id값 붙이지 말고 class명으로도 가능함.
+        
+        // 선생님이 제시해주신것.
+        function showLightbox() {
+            const bigLocation = this.src;
+            lightboxImage.setAttribute('src', bigLocation);
+            lightbox.style.display = 'flex';
+        }
+        // 함수주솟값 호출해서 이미지 열기
+        pics.forEach(item => {
+            item.addEventListener('click',showLightbox);
+        });
+        // 이미지 닫기
+        lightboxImage.onclick = () => {
+            lightbox.style.display = 'none';
+        }
+
+
+
+        // 내 풀이
+        // rowImg.forEach(item => {
+        //     item.addEventListener('click', function showLightbox(){
+        //         const bigLocation = this.src;
+        //         lightboxImage.setAttribute('src', bigLocation);
+        //         lightbox.style.display = 'flex';
+        //     })
+        // });
+        // lightboxImage.onclick = function(){
+        //     lightbox.style.display = 'none';
+        // }
+
+
+    </script>
+
+</body>
+</html>

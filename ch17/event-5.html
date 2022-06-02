@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>addEventListener_cover</title>
+</head>
+<body>
+    <img id="cover" src="https://img.insight.co.kr/static/2021/09/30/700/img_20210930094957_0o5r1272.webp">
+    <script>
+        const imgCover = document.querySelector('#cover');
+        imgCover.addEventListener('mouseover', function(){
+            //바꿔야하는 이미지
+            this.src = 'https://blog.kakaocdn.net/dn/bq36GL/btrgAJv4NJO/rv1K2LmMat5hneAk6vKpZk/img.png'
+        });
+
+        imgCover.addEventListener('mouseout', function(){
+            this.src = 'https://img.insight.co.kr/static/2021/09/30/700/img_20210930094957_0o5r1272.webp'
+        });
+    </script>
+</body>
+</html>
