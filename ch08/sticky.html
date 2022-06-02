@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sticky 사용법</title>
+    <style>
+        /* 태그 선택자로 선택해서 작성함. */
+        header { height: 300px; background-color: aqua;}
+        section { /*height: 2000px;*/ display: flex;}
+        /* height: 2000px; 안줘도 됨. 왜냐면 자식이 커지면 부모도 함께 커지기 때문 */
+        section div:first-child { 
+            flex-grow: 1;   
+            /* 
+                부모가 flex여야함. 
+                flex-grow는 남는 공간에서 자기가 차지하는 지율을 뜻함.
+                1이기 때문에 남는공간 혼자 다 차지 하겠다 라는 뜻.
+            */
+            height: 2000px; 
+            background-color: yellow;
+        }
+        section div:not(:first-child) {
+            position: sticky;
+            top: 0;
+            /* sticky 와 top:0; 을 줘야함. */
+            width: 300px;
+            height: 500px;
+            background-color: antiquewhite;
+        }
+        footer { height: 300px; background-color: aqua;}
+    </style>
+</head>
+<body>
+    <header>
+        Header
+    </header>
+    <section>
+        <!-- div 서로 다른 css를 먹여야 함 -->
+        <div>내용</div>
+        <div>사이드메뉴</div>
+    </section>
+    <footer>
+        Footer
+    </footer>
+</body>
+</html>

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* 시작 전 반드시 먼저 줘야하는 부분이 있다면 먼저 주고 시작하기... 예) ul{list-style:none;} */
+        * {box-sizing: border-box;} 
+        nav > ul { list-style: none; }
+        /* nav안의 바로 밑에 있는 ul 자식한테만 list-style을 설정하겠다  */
+        nav > ul > li {
+                        display: inline-block;
+                        padding: 20px;
+                        margin: 0px 20px;   /*margin이 먹힌 이유는 inline-block을 줘서 가능함.*/ 
+                        /* 2개일땐, 위아래px 좌우px /  */
+                        /* margin은 중첩이 되기때문에 block일 경우에는 2개의 li를 만나면 20px, 
+                            하지만 inline-block일 경우에는 중첩되지 않아서 40px이다. inline은 margin이 중첩되지 않기 때문에*/
+                        border: 1px solid #222222;
+                        cursor: pointer; /* a태그처럼 보임. */
+                        /* 커서는 li영역에 마우스 되었을때 손모양으로 바뀌게 됨. */
+        }
+  
+        /* nav ul {} 보다 >(이거) 준 애가 [ nav > ul ]가 더 우선순위이다. */
+        /* 자주쓰는 것들은 부트스트랩형식으로 사용하고, nav > ul > li  이런방식과 섞어서 쓴다. */
+    </style>
+</head>
+<body>
+    <span style="background-color: aquamarine; padding: 20px; padding: 20px; margin-left: 100px;">aaa</span>
+    <div id="container">
+        <nav>
+            <ul>
+                <li>menu 1</li>
+                <li>menu 2</li>
+                <li>menu 3</li>
+                <li>menu 4</li>
+            </ul>
+        </nav>
+    </div>
+</body>
+</html>
+
+<!--
+
+// 보통 시작전 먼저 주는 것.
+* {box-sizing:border-box;}
+a { color: black; text-decoration: none; }
+ul {list-style:none;}
+
+
+    
+// display에서 가장많이 사용하는 것.
+display: inline > block > inline-block > flex > grid 순서로 많이 씀.
+
+block
+inline
+=width, height사용 불가.
+inline-block
+=위치는 인라인처럼되지만 width, height값을 설정할 수 있음. 
+= 가로값은 필요한 만큼만 위치를 시키고, margin이나 height 는 block;
+= inline과 block 2가지 속성을 모두 가지게 된다.
+
+none
+화면에 없어졌으면 좋겠다. 존재자체가 없음. 영역을 차지하지 않음.
+flex = flex-box
+
+table-ceil ??
+
+
+visibility:hidden;
+공간차지는 하지만 보이지 않음. 
+display: none;
+공간차지 없음. 보이지도 않음
+opacity 
+투명도를 주는 것.
+
+
+
+
+nav, ul // nav와 nav안에 ul이면 다 설정.
+nav ul // nav 안에 있는 ul이면 다 설정.
+nav > ul // nav 바로 아래 ul에만 설정하겠다 라는 뜻.
+
+
+
+
+
+
+-->

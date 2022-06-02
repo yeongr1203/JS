@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        img {margin: 15px;}
+        /* img {margin-bottom:15px;} */
+        #circle { border-radius:50%; }  /*가로로 더 긴 이유는 이미지의 반에서 라운드 50프로 준 사진이기때문에 라운드가 길죽하다. :: 이미지 때문.*/
+        #round { border-radius: 30px;}
+        #round1 {
+            border-top-left-radius: 20px;
+            border-bottom-right-radius: 30px;
+        }
+        /* boxsizing 안하면 컨텐츠영역만 200px + padding따로 임. */
+    </style>
+</head>
+<body>
+    <!-- <img src="1.jpg"> -->
+    <img id="round" src="1.jpg"> <!-- -라운드 -->
+    <img id="circle" src="1.jpg"> <!-- -서클 -->
+    <img id="round1" src="1.jpg">
+    </body>
+</html>

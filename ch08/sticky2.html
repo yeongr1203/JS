@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>sticky 2</title>
+    <style>
+        .container { height: 3000px; }
+        header {
+            height: 200px;
+            background-color: antiquewhite;
+        }
+        .header_sticky {
+            position: sticky;
+            top: 0;
+            background-color: aquamarine;
+            height: 100px;
+            /* sticky와 top:0, 스크롤만있으면 됨. */
+        }
+        .content { 
+            /*
+            height: 300px; 
+            background-color: wheat;
+            */
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            Header
+        </header>
+        <div class="header_sticky">
+            Sticky
+        </div>
+        <div class="content">
+            <img src="https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyMTEwMzBfMTM0%2FMDAxNjM1NTY5MTY4MDQx.yXlKi8196i2ykdA3DPJNH-FGJ-B9s40tZphlS1ut7n0g.9dhw2UcbDhz7FB8gnq4opwmKxiQi8WrB5Bx9G3jVEdcg.JPEG.ggod128%2F9.jpg&type=sc960_832">    
+        </div>
+    </div>
+</body>
+</html>
