@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .c_pointer { cursor: pointer;}
+        .parent {display: flex;}
+        .parent > .content { flex-grow: 1;}
+        .parent > .close {width: 15px;}
+    </style>
+</head>
+<body>
+    <h1>Web Programming</h1>
+    <p>공부할 주제를 기록해보세요. ver.2</p>
+    <div>
+        <input type="text" id="subject" value="">
+        <input type="button" value="추가" onclick="newPeg();">
+        <input type="button" value="삭제" onclick="delSubject();">
+    </div>
+    <div id="itemList">
+
+    </div>
+    <script>
+        // X를 삭제하면 값을 가지고 있는 부모를 찾아서 삭제되는것.
+        const itemList = document.querySelector('#itemList');   
+        const subject = document.querySelector('#subject');  
+
+        function newPeg() {
+            const txt = subject.value;
+            const newDiv = document.createElement('div');
+            // 리팩토링
+            
+            newDiv.classList.add('parent');
+            newDiv.innerHTML =`
+                <div class="content">${txt}</div>
+                <div class="close c_pointer">X</div>
+            `;  // 여기까지가 메모리상태.
+            // div안에 txt도 있고, X도 있음.
+
+            itemList.appendChild(newDiv);
+            // 꼭 appendChild 하고 나서 아래 쿼리셀렉트해야함.
+            const divClose = newDiv.querySelector('.close');
+            divClose.addEventListener('click', function(){
+                // newDiv.remove();  // 부모가 누군지 알 수있을 때 사용.
+                // divClose.parentElement.remove();
+                this.parentElement.remove();    // parentElement는 부모를 지칭함.
+                // 부모가 누군지 모를때 사용.
+                // this는 나 자신.
+                //   () => 한다면 this가 변경된다. 그래서 사용한다면 NewDiv로 변경되어야 함.
+                // this말고 close를 쓴다면 메모리에 남기 때문에 this 사용이 퍼포먼스 적으로도 낫다.
+                /*  X만 삭제되는 경우
+                    this.remove();
+                */
+
+               /*
+               parentElement는 태그만 말함.
+               */
+            });
+            subject.value = '';
+        }
+
+        function delSubject() {
+            const delDiv = document.querySelector('#itemList > div:last-child ') ; // css 방법으로 적용시켜서 주솟값을 받은 후 복사함.
+            delDiv.remove();
+        }
+    </script>
+
+</body>
+</html>

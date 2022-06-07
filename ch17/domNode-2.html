@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM에서 노드 추가 및 삭제</title>
+</head>
+<body>
+    <!-- 내일은 SPA로 만드는 방법 알려주신다고 하셨음. -->
+    <div id="container">
+        <h1> DOM을 공부합시다.</h1>
+        <!-- <a href="#" onclick="addP(); this.onclick='';">더보기</a> -->
+        <!-- this.onclick은 한 번만 보여주는 것. -->
+        <a href="#" onclick="addP();">더보기</a>
+        <div id="info"></div>
+        <!-- <p></p> // createElement('p')는 p태그를 메모리상에 만들어 둠.(엘리먼트를 만드는 것.) -->
+        <!-- 2) DOM은 document object model의 줄임말입니다. -->
+    </div>
+    <script>
+        let cnt = 1;    // this.onclick 확인가능.
+        const divInfo = document.querySelector('#info');        // 더보기 누를때 열고 닫힘 위해 사용.
+        function addP() {
+            // 비워있다고 보이고, 보여진다면 지운다.
+            if(divInfo.innerHTML === '') {
+                // const newP = document.createElement('p');    // 기존
+                // divInfo.appendChild(newP);
+                //  상단 처럼 할 필요가 없었다.
+                const newP = divInfo.appendChild(document.createElement('p'));
+                // 1번 - document.createElement('p') 생성하면서 Child가 리턴을 시켜주기때문에 P태그를 생성후 갑을 리턴 시켜주겠다 라는 말.
+                // 생성하면서 리턴을 바로 시켜서 값을 받아오는 것.
+                // appendChild가 리턴도 해주는 아이라서 상단처럼 두번 풀어서
+                // 사용하지 않아도 됨. :: 소스적으로도 괜찮음. (가독성은 위가 더 좋음)
+
+                const newDiv = document.createElement('div');
+                newDiv.innerText = 'Div입니다.';
+                const txt = `DOM은 document object model의 줄임말입니다. ${cnt++}`;
+                // const txtNode = document.createElement(txt);
+                // newP.append(txt);    // 기존
+                newP.append(txt, 'ddd', 'aaa', newDiv);
+                // 2번 - p태그를 생성하면서 그 리턴값안에 객체와 텍스트를 추가 시켜주는 것.
+                document.querySelector('#info').appendChild(newP);
+                
+            } else {
+                divInfo.innerText = null; // '' 대신 null도 가능.
+            }
+
+            /*
+            const newP = document.createElement('p');   // p 대신 만들고 싶은 태그 적으면 됨. div ...
+            const txt = `DOM은 document object model의 줄임말입니다. ${cnt++}`;
+            // const txtNode =  document.createTextNode(txt);  // div안에 2)text노드 추가
+            //newP.appendChild(txtNode);
+            
+            newP.append(txt);
+            // appendChild는 p태그 안에 있는 자식이 있으면 자식 뒤에 붙여라.
+            document.querySelector('#info').appendChild(newP);
+
+            // append와 appendChild 차이점.
+            // appendChild(객체(객체 만든것만 넣을 수있음.)) // 문자열도 안됨.
+                :: 객체든 문자열이든 한번에 여러값 넣을 수 있음. 그리고 리턴값이 있다.
+            // append는 문자열도 들어갈 수 있고, 객체도 가능.  
+                :: append가 좀 더 유연한 친구. 그래서 appendChild보다 기능이 더 많다!!
+            */
+
+            /*
+                기존 스크립트 내용
+                let cnt = 1;
+                const divInfo = document.querySelector('#info');
+                function addP() {
+                    if(divInfo.innerHTML === '') {
+                        const newP = document.createElement('p');
+                        const txt = `DOM은 document object model의 줄임말입니다. ${cnt++}`;
+                        //const txtNode = document.createTextNode(txt);
+                        newP.append(txt);
+                        document.querySelector('#info').appendChild(newP);
+                    } else {
+                        divInfo.innerText = null;
+                    }
+                }
+            */
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        ul { list-style: none;}
+        .check {cursor: pointer;}
+        .checked { color : #ccc; text-decoration: line-through;}
+    </style>
+</head>
+<body>
+    <h1>할 일 목록</h1>
+    <ul>
+        <li><span class="check"> v 할 일1</span></li>
+        <li><span class="check"> v 할 일2</span></li>
+        <li><span class="check"> v 할 일3</span></li>
+        <li><span class="check"> v 할 일4</span></li>
+        <li><span class="check"> v 할 일5</span></li>
+    </ul>
+    <script>
+        const checkList = document.querySelectorAll('.check');
+        // querySelectorAll은 배열이 리턴, check가 있는 span태그의 주솟값이 배열화되어 넘어감.
+        // 함수 총 5번 호출.
+        checkList.forEach(item => {     // forEach한테 1개의인자를 보냄.
+            // 호출할때마다 item의 값이 매번 바뀐다.
+            item.addEventListener('click', (e) => {
+                e.target.classList.toggle('checked');
+                // classList에 저장된 주솟값에 토글이라는 메소드를 줌.
+                console.log(e.target.classList);
+                //  e.target.classList()은 객체의 주솟값.toggle
+                // 메소드. 은 값을 가지고 리턴을 했고,  
+                // 풀이
+                /*
+                const obj = e.target.classList();
+                obj.toggle('checked');
+                */
+            });
+        });
+        /*
+        span 이라는 객체 안에 classList 객체에서 check이면 checked로 해준다.
+        */
+    </script>
+</body>
+</html>
+<!-- 
+            .을 찍을 수 있을 땐, 객체일때!!
+        .을 찍는다는 말은 왼쪽이 주솟값일때. 
+        객체 - 속성 또는 메소드. 
+        
+ -->

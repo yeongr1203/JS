@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .c_pointer { cursor: pointer;}
+        .parent {display: flex;}
+        .parent > .content { flex-grow: 1;}
+        .parent > .close {width: 15px;}
+    </style>
+</head>
+<body>
+    <h1>Web Programming</h1>
+    <p>공부할 주제를 기록해보세요. ver.1</p>
+    <div>
+        <input type="text" id="subject" value="">
+        <input type="button" value="추가" onclick="newPeg();">
+        <input type="button" value="삭제" onclick="delSubject();">
+    </div>
+    <div id="itemList"></div>
+    <script>
+        // 자기자신한테 이벤트가 걸려있음.
+        // 자바스크립트는 한번씩 순차적으로 실행이 되고 나면 끝!
+        const itemList = document.querySelector('#itemList');   
+        const subject = document.querySelector('#subject');      //input의 suject (주솟값)
+        function newPeg() {
+            // value값 가져올때는 안에서 가져와야한다.그래야 최신걸 가지고 옴.
+            const txt = subject.value;
+            // 주소값.(점) = 속성의 주솟값을 복사하여 왼쪽에 준다.
+            // 최초의 value 값은 빈칸.
+            // console.log(txt);
+            const newDiv = document.createElement('div');
+
+            //클릭했을 때, 이벤트실행되도록 추가함.
+            // 방법1 = newDiv.addEventListener('click',delClick);
+            // 방법 2
+            newDiv.addEventListener('click', () => {
+                // newDiv.remove();
+                this.remove();
+            });
+            // newDiv에 클래스명 지정.
+            newDiv.classList.add('c_pointer');
+            itemList.appendChild(newDiv);
+            newDiv.innerText = txt;
+            // newDiv.append(txt);
+            subject.value='';
+        }
+        // function delClick(){
+        //     newDiv.remove();
+        // }
+
+        /*  
+            실행이 안되는 이유...?
+            함수가 실행되기 전에 value값은 빈칸.
+            이 value의 값이 빈칸인 애를 받아서 빈칸인값을 가지고
+            들어가기 때문에, 값을 입력해도 받을 수 없음.
+            const itemList = document.querySelector('#itemList');   
+            const subject = document.querySelector('#subject').value;   //객체.value의 값과 subject는 별개!
+            // console.log( '서브젝트 : ' + subject);
+            function newPeg() {
+                const txt = subject;
+                const newDiv = document.createElement('div');
+                itemList.appendChild(newDiv);
+                newDiv.innerText = txt;
+            }
+        */ 
+
+        function delSubject() {
+            //주솟값.remove();
+            const delDiv = document.querySelector('#itemList > div:last-child ') ; // css 방법으로 적용시켜서 주솟값을 받은 후 복사함.
+            delDiv.remove(); // 그 주솟값을 삭제시킴.
+            
+            /* 방법2 == 선생님 풀이.
+            itemList.lastChild.remove();
+            */
+            /* 방법 3 == 풀어쓴것.
+            const div2List = itemList.querySelectorAll('div');
+            div2List[div2List.length-1].remove();
+            */
+        }
+    </script>
+
+</body>
+</html>
+<!--    
+        const itemList = document.querySelector('#itemList');   // id=itemList 주솟값.
+        function newPeg(){
+            const newDiv = itemList.appendChild(document.createElement('div'));
+            const value = document.getElementById('subject').value;
+            newDiv.append(value);
+        }
+
+
+        const itemList = document.querySelector('#itemList');
+        function newPeg() {
+            const newDiv = itemList.appendChild(document.createElement('div'));
+            // itemList안에 div생성
+            const result = document.getElementById('subject');
+            // div안에 subject인 input태그의 주솟값을 가지고 온다.
+            newDiv.append(result.value);
+            // subject안의 value값을 넣어준다.
+            result.value ='';
+            // 넣고 난 다음 빈칸으로 초기화시켜준다.
+        }
+ -->

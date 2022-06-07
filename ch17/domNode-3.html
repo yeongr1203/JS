@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>DOM을 공부합시다.</h1>
+    <button onclick="addContents();">더 보기</button>
+    <div id="info"></div>
+    <script>
+        const imgSrc = 'https://img.insight.co.kr/static/2021/09/30/700/img_20210930094957_0o5r1272.webp';
+        const imgAlt = '이미지정보';
+        // id값이 info인 친구에게 주소값을 복사하여 divInfo에게 준다.
+        const divInfo = document.querySelector('#info'); // ('항상 문자열이 있어야함.')
+        
+        function addContents() {
+            const newP = divInfo.appendChild(document.createElement('p'));
+            const imgMain = divInfo.appendChild(document.createElement('img'));
+            newP.append('DOM은 document object model의 줄임말입니다.');
+            imgMain.setAttribute('src',imgSrc,'alt',imgAlt);        
+        }
+        // 더보기 버튼 누르면 2개 추가.
+        // 하나는 문자열이고, 하나는 이미지태그가 들어감.
+        /*  선생님풀이
+            const imgSrc = 'https://img.insight.co.kr/static/2021/09/30/700/img_20210930094957_0o5r1272.webp';
+            const imgAlt = '이미지정보';
+            const divInfo = document.querySelector('#info');
+            function addContents() {
+                const newP = document.createElement('p');   //자바스크립트 안에 p태그 만들었고,
+                divInfo.appendChild(newP);                  // p태그 만든걸 divInfo에 넣어줌.
+                // const newP = divInfo.appendChild(document.createElement('p'));
+                newP.append('DOM은 document object model의 줄임말입니다.');
+
+                const newImg = document.createElement('img');
+                newImg.src = imgSrc;
+                newImg.art = imgAlt;
+                divInfo.appedChild(newImg);
+            }
+        */
+
+        /*  선생님 사용하는 방법.  ==>  tip 같은 방법.
+            // 편해보이지만 이벤트 걸기가 힘들다.
+            // 이벤트걸때는 이미지에 값을 찾아서 이벤트 걸어주면 되기때문에... 어렵긴 함.
+            function addContents2() {
+                const div = document.createElement('div');  // 부모가 될 엘리먼트 추가하고
+                divInfo.innerHTML = `
+                    <p>DOM은 document object model의 줄임말입니다.</p>
+                    <img src = "${imgSrc}" alt="${imgAlt}"
+                `;
+                // 문자열로 객체화로 시켜버리고
+                divInfo.appendChild(div);
+                // divInfo에 넣어준다.
+            }
+        */
+    </script>
+</body>
+</html>

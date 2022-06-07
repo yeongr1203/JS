@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>reference (주소값차이)</title>
+</head>
+<body>
+    <script>
+        let num = 10;    // 리터럴타입, 주솟값이 아니라 그 값이 들어감.
+        const objBox = {    // objBox의 객체를 생성, 초깃값을 10으로 줌. (얘가 가지고 있는것은 주소값.)
+            num: 10
+        };
+
+        function changeNum(n) {
+            n=30;
+        }   // ---------
+
+        function changeObjNum(o) {  // o 라는 변수 (별개) 이지만 값을 같은 값을 가지고 있음. 모든 매개변수는 다 다름.
+            // o = { num: 10 };
+            o.num = 30;
+        }
+
+        // 리터럴 값이 10인 아이
+        console.log(`num : ${num}`);
+        changeNum(num);        
+        console.log(`num : ${num}`);
+
+        console.log('-------------------------');
+        
+        console.log(`objBox : ${objBox.num}`);
+        changeObjNum(objBox);        
+        console.log(`objBox : ${objBox.num}`);
+
+    </script>
+</body>
+</html>

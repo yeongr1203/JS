@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        const obj = {
+            'a' : 111,
+            'b' : 222,
+            '0' : 100,
+            '1' : 200,
+        }
+
+        let varNum = 'a';
+        varNum = 'b';
+
+        console.log(obj.a);
+        // console.log(obj.0);  // 0은 안됨.
+        // .점은 문자열일 때만 가능. 숫자는 불가능.
+        console.log(obj['a']);
+        console.log(obj['0']);
+        console.log(obj[0]);
+        console.log(obj[varNum]);
+        // 변수명을 가지고 올 수 있음.
+        // .varNum은 사용불가. varNum이라는 객체가 있어야만 가능.
+
+        // 객체를 배열처럼 만들어서 사용.
+        // 배열도 객체로 만들어서 사용.
+    </script>
+</body>
+</html>
