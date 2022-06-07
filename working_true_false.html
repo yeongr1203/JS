@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>if_and_or</title>
+</head>
+<body>
+    <script>
+        // 숫자 - 0 : false, 0제외 : true           // -1도 true, -3도 true
+        // 문자열 - '' : false, !'' : true          // 빈칸이면 false, 빈칸(문자열값이 있으면)이 아니면 true
+        // null, undefined, NaN - false
+        // 주소값 - true
+
+        const bool = 10;
+        if(bool) {
+            console.log('진실 OOOO');
+        } else {
+            console.log('거짓 XXXX');
+        }
+        
+        const bool2 = 'false';
+        if(bool2) {
+            console.log('진실 OOOO');
+        } else {
+            console.log('거짓 XXXX');
+        }
+
+        const bool3 = null;
+        if(bool3) {
+            console.log('진실 OOOO');
+        } else {
+            console.log('거짓 XXXX');
+        }
+
+        const bool4 = [];       //주소값
+        if(bool4) {
+            console.log('진실 OOOO');
+        } else {
+            console.log('거짓 XXXX');
+        }
+    </script>
+</body>
+</html>
