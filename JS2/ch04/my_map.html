@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>map사용하여 배열 값 나타내기</title>
+</head>
+<body>
+    <script>
+        const myArr = { 
+            '0' : 10,      
+            '1' : 43,
+            '2' : 22,
+            '3' : 38,
+            '4' : 17,
+            '5' : 56,
+            '6' : 47,
+            'length' : 7,
+            'forEach' : function(cb) {      
+                for(let i=0; i<this.length; i++) {  
+                    const val = this[i];         
+                    cb(val, i);
+                }
+            },
+            // 콜백함수에서 조건식 주고 문제 풀이하는 방법. = 1번
+            // 'map' : function(cb) {
+            //     const tempArr = [ ];
+            //     for( let i=0; i<this.length; i++){
+            //         if(this[i]%2===0){
+            //              tempArr.push(cb(this[i]));
+            //         } else {
+            //             tempArr.push(this[i]);
+            //         }
+            //     }
+            //     return tempArr;
+            // }   
+
+            // 내풀이
+            // 'map' : function(cb) {
+            //     const tempArr =[];
+            //     for(let i=0; i<this.length; i++){
+            //         tempArr.push(cb(this[i]));
+            //     }
+            //     return tempArr;
+            // }
+            'map' : function(cb) {
+                const tempArr =[];
+                for(let i=0; i<this.length; i++){
+                    // const returnVal = cb(this[i],i);
+                    // tempArr.push(returnVal);
+                    // 한줄로 작성가능.
+                    tempArr.push(cb(this[i],i));
+                }
+                return tempArr;
+            }
+
+        }
+
+        // 선생님 풀이
+        const arr2 = myArr.map(function(item, idx){     // 인덱스로 조건 맞출꺼면 idx를 받아야 함.
+            console.log(idx);
+            return item +5;
+        });
+        // console.log(arr.toString());
+        console.log(arr2.toString());
+        // console.log(myArr);
+        
+        //  myArr에 4번째 값 이후로 값들을 x2한 새로운 배열을 만든다.
+        const standIdx = 4; // standIdx를 사용한 3항식으로 풀이 할때만 필요함.
+        const arr3 = myArr.map(function(item, idx){
+            // if( idx >= 3 ){
+            //     return item *2;
+            // } else {
+            //     return item;
+            // }
+            // return idx > 3 ? item *2 : item;
+            return idx > standIdx ? item *2 : item; // standIdx를 사용해서 풀이.
+        });
+        console.log(arr3);
+
+
+
+        /*상단 map에서는 배열만 받아오고 아래 함수에서 조건식을 줘서 맞추기.*/
+        // 내풀이
+        // const arr2 = myArr.map(function(item){
+        //     return item % 2 === 0? item +3 : item;
+        // });
+        // console.log(arr2.toString());
+        
+
+        // 2번
+        // const arr2 = myArr.map(function(item) {
+        //     return item* 2;
+        // });
+        // // console.log(arr.toString());
+        // console.log(arr2.toString());
+
+
+
+    </script>
+</body>
+</html>

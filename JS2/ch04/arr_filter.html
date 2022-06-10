@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>배열_filter</title>
+    <!-- filter는 map이랑 비슷함. -->
+    <!-- map은 안에 값을 수정하는 용도로 사용하지만,  filter는 수정 불가. -->
+</head>
+<body>
+    <script>
+        const arr = [ 10, 43, 22, 38, 17, 56, 47 ];
+        const arr2 = arr.filter(function(item, idx){
+            // filter도 function에 가진 값만큼 호출.
+            // filter는 false를 리턴하게 되면 버림. true인 애들만 담아서 배열.
+            if(item%2===0){
+                return true;
+            } 
+            // else {
+            //     return false;
+            // }
+            // else가 필요없는 이유는? 
+            // 값을 넘기지 않으면 undefined. 어차피 false이고
+            // 자동으로 return; 이 되고 값을 넘기지 않기 때문에. 
+            // 어차피 true만 출력된다.
+            // 은지 풀이: else를 적지 않으면 자동으로 '' 빈칸이 리턴이 되고 그 빈칸은 false이기 때문에 
+        });
+        console.log(arr.toString());
+        console.log(arr2.toString());
+        
+        // Q. 10, 22, 17, 47
+        const arr3 = arr.filter(function(item, idx){
+            // 선생님 풀이.
+            if(idx%2===0) {
+                return true;
+            }   // false만 아니면 됨.
+
+            // return idx % 2 === 0 ? true : false;     // 3항식으로 풀어봄. 내가
+        });
+        console.log(arr3.toString());
+    </script>
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>콜백함수_이름 출력</title>
+</head>
+<body>
+    <script>
+        function print(p1, p2, cb=hello) {
+            cb(p1, p2);
+        }
+
+        function hello(nm) {
+            console.log(`Hi~~~ ${nm}`);
+        }
+        // 파라미터값이 한개, 그래서 콜백함수에는 파라미터 값이 한개만 들어감.
+        // 그래서 뒤에 p2는 undefined, 하지만 print함수에서는 쌩깜. 
+
+        function goodbye(nm) {
+            console.log(`Bye~~ ${nm}`);
+        }
+
+        // const nm = 'yeongrong';
+        print('yeongrong');
+        print('yeongrong','',goodbye);
+        
+        //선생님 풀이
+        print('홍길동');
+        print('홍길동', undefined, goodbye);
+
+        /*  
+        hello('1','2','3');
+        goodbye('1','2','3');
+        // hello, goodbye도 앞에 파라미터 한개의 값만 받음.
+        // 하나만 받고 뒤에껀 쌩깜.
+        */
+
+        
+    </script>
+</body>
+</html>

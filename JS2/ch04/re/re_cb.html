@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>콜백함수</title>
+</head>
+<body>
+    <script>
+        function calc(cb, n1, n2) {
+            return cb(n1, n2);
+        }
+
+        function fnsum(n1, n2) {
+            return n1 + n2;
+        }
+
+        function fnMulti(n1, n2) {
+            return n1 * n2;
+        }
+
+        const r1 = calc(fnsum, 10, 20);
+        console.log(r1);
+
+        const r2 = calc(fnMulti, 10, 20);
+        console.log(r2);
+
+        // 익명함수를 만들어서 사용. 콜백함수는 이렇게 사용함.
+        const r3 = calc(function(n1,n2) {
+            return n1 - n2;
+        }, 100, 20);
+        console.log(r3);
+        
+
+        // Q. 콜백함수 사용하여, 나누기 결과값이 나타나게 하기.
+        const divide = calc(function(n1, n2){
+            return n1 / n2;
+        }, 40, 8);
+        console.log(divide);
+
+    </script>
+</body>
+</html>
+<!-- 
+    /* 함수 사용방법
+
+    function fnsum(n1, n2) {
+        return n1 + n2;
+    }        
+    function fnMulti(n1, n2) {
+        return n1 * n2;
+    }
+    
+    만약 함수안에 파마리터에 값이 없다면.
+    : undefined + undefined = NaN;  // 결과값.
+    5 + 4 를 출력하고 싶다면.
+    : console.log(fnsum(5,4));      // 얘는 찍고나면 끝.
+    // 뒤가 필요없다면 이렇게 사용해도 됨.
+
+    fnsum(4,5); = 이렇게 단독으로 쓰는건 보이드함수만 사용가능.
+    리턴함수는 외롭게 쓰는 것 아님.
+    리턴인지 모르겠으면 변수에 담아서 사용. 
+    => 아래의 1번과 2번처럼 사용.
+
+    console.log(fnsum(5,4)); 는 사용하면 끝이지만, 
+    호출해서 사용할 일 이 있을 수 있다면
+    1과 2를 사용하면 값을 꺼내 사용 할 수 있음.
+    1. const ddd = fnsum(4,5);
+    2. onsole.log(ddd);       // 콘솔에 찍든
+
+    const ddd2 = fnMulti(ddd, 2);   // 다른곳에 보내주든 하기.
+    */
+ -->

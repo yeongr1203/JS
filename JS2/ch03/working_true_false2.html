@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>if_and_or2</title>
+</head>
+<body>
+    <script>
+        /*
+        // 함수 선언
+        function m2() {
+            console.log('1');
+        }
+        // 함수호출을 하지 않으면 나타나지 않음.
+
+        if(m2()) {              // if(false)이기 때문에 나타나지 않음.
+            // 선언을해서 m2까지 찍고, 그 m2가 리턴이 없는 voide함수라서 값이 없음. 빈칸.
+            // 빈칸일때는 false이기 때문에 선언했던 1만 나타남.
+            console.log('2');
+        }
+
+        let a = 0;
+        if(a=(0*100)){
+            console.log('2');
+        }
+        console.log(`a:${a}`);
+        */
+
+        function m1(){
+            console.log('1');
+            // return 1;
+        }
+        function m2(){
+            console.log('2');
+            return 1;
+        }
+        if(m1() && m2()) {      // undefined && m2 이기떄문에, undefined가 나타났기때문에 false 
+            // && 연산자는 의미없다. 이미 false 이기 떄문에 실행이 안됨. 
+            console.log('3');
+        }
+        // 결과값은 1만 나타남.
+
+    </script>
+</body>
+</html>

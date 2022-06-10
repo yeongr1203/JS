@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>객체 사용 방법</title>
+</head>
+<body>
+    <!-- 
+        값전달객체, 값을 배열처럼 분류.
+        값전달고 기능을 같이 가지고 있을 수 있고, 기능만 가지고 있을 수 있음.
+        보통은 객체는 값 전달용으로 많이 사용함.
+
+        주로 사용벙법은 2번
+     -->
+    <script>
+        function NumberUtil(){
+            this.abs = function(num) {
+                return num < 0 ? -num : num;
+            }
+
+            this.factorial = function(num) {
+                return 1111;
+            }
+        }
+        
+        const NumberUtil = new NumberUtil();
+        console.log(NumberUtil.abs(-10));
+        console.log(NumberUtil.abs(10));
+
+        //2번 - 많이 사용함.
+        const obj2 = {};
+    </script>
+</body>
+</html>

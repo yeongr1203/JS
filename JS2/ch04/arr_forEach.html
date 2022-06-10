@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>배열_foreach</title>
+</head>
+<body>
+    <script>
+        const arr = [ 10, 43, 22, 38, 17, 56, 47 ];
+
+        // 방법 1   = 함수정의 후 사용.
+        let sum = 0;                // 초기화
+        function fnsum(item) {      // 함수정의
+            sum += item;
+        }
+        // fnsum함수에 각 배열 값이 item에 들어감. 배열 수만큼 돌아감.
+        arr.forEach(fnsum);             // fnsum의 주솟값 받음. 호출하면서 배열의 값도 호출.
+        console.log(`sum : ${sum}`);    
+        // 결과값 : 233
+        console.log('--------------');
+
+        // 방법 2   = 바로 익명함수로 작업. 이렇게 많이 사용함.
+        let sum2 = 0;
+        /* 
+        const result = forEach(function(item) {
+            sum2 +=item;
+        }); 
+        //보이드 함수라서 이렇게 작성할 필요 없음.
+        console.log(`result : ${result}`);
+        */
+        arr.forEach(function(item) {    // 여기서 바로 익명함수로 작업.
+            sum2 += item;
+        });
+
+        console.log(`sum2 : ${sum2}`);
+
+        console.log('--------------');
+        arr.forEach(function(item, idx){
+            console.log(`arr[${idx}] : ${item}`);
+            // 각 인덱스 번호에 맞는 값이 출력됨.
+        });
+
+
+        // Q. 값이 짝수인 애들만 나타나도록 하기.
+        console.log('--------------');
+        arr.forEach(function(item, idx){
+            if(item % 2 === 0 ){
+                console.log(`arr[${idx}] : ${item}`);
+            } 
+        });
+
+
+        // Q. 값이 홀수인 애들 합계를 구하시오.
+        console.log('--------------');
+        let sum_odd = 0;
+        arr.forEach(function(item){
+            if(item%2 !== 0){           // item % 2 === 1 도 가능.
+                sum_odd += item;
+            }
+        });
+        console.log(`홀수 전체 더함 : ${sum_odd}`);
+    </script>
+</body>
+</html>

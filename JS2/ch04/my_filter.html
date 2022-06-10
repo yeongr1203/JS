@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>filter_콜백</title>
+</head>
+<body>
+    <script>
+        const myArr = { 
+            '0' : 10,      
+            '1' : 43,
+            '2' : 22,
+            '3' : 38,
+            '4' : 17,
+            '5' : 56,
+            '6' : 47,
+            'length' : 7,
+            'forEach' : function(cb) {      
+                for(let i=0; i<this.length; i++) {  
+                    const val = this[i];         
+                    cb(val, i);
+                }
+            },
+            'map' : function(cb) {
+                const tempArr =[];
+                for(let i=0; i<this.length; i++){                    
+                    tempArr.push(cb(this[i],i));
+                }
+                return tempArr;
+            },
+            'filter' : function(cb){
+                const addArr = [];                
+                for(let i=0; i<this.length; i++){
+                    if (cb(this[i])) {
+                       addArr.push(this[i]);    // 넣고싶은 값.
+                    }                                    
+                }
+                return addArr;
+            }
+        }
+        const resultArr = myArr.filter(function(item){
+            return item % 2 === 0 ? true : false;
+        });
+        console.log(resultArr.toString());
+        
+        // for문 밖에 if문 사용할 경우 , 검사할 값이 1개인지 
+        // for문 안에 if문 사용할 경우, 검사할 값이 여러값인지
+
+    </script>
+</body>
+</html>

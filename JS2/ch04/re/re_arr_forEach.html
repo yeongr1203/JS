@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>배열_foreach</title>
+</head>
+<body>
+    <script>
+        const arr = [ 10, 43, 22, 38, 17, 56, 47 ];  
+
+        let sum = 0;                
+        function fnsum(item, idx, arr) {      
+            sum += item;
+        }
+        arr.forEach(fnsum);     // fnsum에 배열을 호출하는 것.        
+
+        // forEach가 보이드함수인 이유는 아래처럼 작성하지 않았고, =이 없어서 어디다 담는 값이 아니었다.
+        // 그냥 호출만 했을뿐, = 또는 리턴기능이 있어야 하는데 리턴하는 값이 없어서.
+        // 이렇게 작성한게 아니면 거의 보이드함수.
+        // forEach가 들어온 파라미터가 리턴자체가 안됨.
+        // const forn = arr.forEach(fnsum);             
+        // console.log(arr.forEach(fnsum));  
+         
+        console.log(`sum : ${sum}`);    
+        console.log('--------------');
+
+        // 방법 2   = 바로 익명함수로 작업. 이렇게 많이 사용함.
+        let sum2 = 0;
+        arr.forEach(function(item) {    
+            sum2 += item;
+        });
+
+        console.log(`sum2 : ${sum2}`);
+
+        console.log('--------------');
+        
+        arr.forEach(function(item, idx){
+            console.log(`arr[${idx}] : ${item}`);
+        });
+
+
+        // Q. 값이 짝수인 애들만 나타나도록 하기.
+        console.log('--------------');
+        arr.forEach(function(item, idx){
+            if(item % 2 === 0 ){
+                console.log(`arr[${idx}] : ${item}`);
+            } 
+        });
+
+
+        // Q. 값이 홀수인 애들 합계를 구하시오.
+        console.log('--------------');
+        let sum_odd = 0;
+        arr.forEach(function(item){
+            if(item%2 !== 0){           
+                sum_odd += item;
+            }
+        });
+        console.log(`홀수 전체 더함 : ${sum_odd}`);
+
+    </script>
+</body>
+</html>

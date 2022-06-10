@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>유사배열, forEach</title>
+    <!-- map은 잘 사용하지 않지만, forEach는 자주 사용함. -->
+</head>
+<body>
+    <script>
+        /*
+        자바스크립트에서는 배열이 따로 없고, 전부 객체.
+        전부 다 가지고 있는 객체 = 배열이라고 함.
+        내가 직접 값을 준 배열. = 유사배열
+        */
+        // [ 10, 43, 22, 38, 17, 56, 47 ];
+        const myArr = { // {}중괄호 = 객체만들기, 배열처럼 사용가능.
+            '0' : 10,       // 내가 직접 값을 준 배열. = 유사배열
+            '1' : 43,
+            '2' : 22,
+            '3' : 38,
+            '4' : 17,
+            '5' : 56,
+            '6' : 47,
+            'length' : 7,
+            'forEach' : function(cb) {      // 콜백함수
+                //length만큼 값을 가지고 와야함.
+                for(let i=0; i<this.length; i++) {  //this.는 나 자신(객체) 꼭 this. 해야함. 나자신의 주솟값을 뜻함.
+                    // 외부에서 가지고 오고싶을 땐, 주솟값.length(=myArr.length)라고 선언하기 때문에 this필수. 
+                    const val = this[i];          // 나자신의 키값.  
+                    // i의 키 값이 val에 담겼고, 사용한 함수에는 val 매개변수 1개이기 때문에 뒤에 i는 undefined지만 생략됨.
+                    cb(val, i);
+                    // 줄여쓰기 => cb(this[i], i);
+                }
+            }   // 함수가 있나 없나로 에러가 터지거나 안터지거나. 함수가 있어야 에러가 안터짐.
+        }
+
+        // 상단 배열에 forEach문이 없다면 에러터짐. forEach문을 작성한 후에는 결과값이 나타남.
+        let sum = 0;                
+        function fnsum(item) {   
+            sum += item;
+        }
+        myArr.forEach(fnsum);              
+        console.log(`sum : ${sum}`);   
+
+
+        let sum2 = 0;
+        myArr.forEach(function(item) {    // 여기서 바로 익명함수로 작업.
+            sum2 += item;
+        });
+        console.log(`sum2 : ${sum2}`);
+
+        console.log('--------------');
+        myArr.forEach(function(item, idx){
+            console.log(`arr[${idx}] : ${item}`);
+            // 각 인덱스 번호에 맞는 값이 출력됨.
+        });
+
+        // Q. 값이 짝수인 애들만 나타나도록 하기.
+        console.log('--------------');
+        myArr.forEach(function(item, idx){
+            if(item % 2 === 0 ){
+                console.log(`arr[${idx}] : ${item}`);
+            } 
+        });
+
+        // Q. 값이 홀수인 애들 합계를 구하시오.
+        console.log('--------------');
+        let sum_odd = 0;
+        myArr.forEach(function(item){
+            if(item%2 !== 0){           // item % 2 === 1 도 가능.
+                sum_odd += item;
+            }
+        });
+        console.log(`홀수 전체 더함 : ${sum_odd}`);
+
+
+
+    </script>
+</body>
+</html>

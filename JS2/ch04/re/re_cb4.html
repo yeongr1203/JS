@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>콜백함수</title>
+</head>
+<body>
+    <script>
+        function fn1(item) {
+            console.log(`fn1 : ${item}`);
+        }
+
+        function fn2(item) {
+            console.log(`fn2 : ${item}`);   
+            // return 키워드 생략되어 있음.
+        }
+        // (인자2개=콜백, for문의 기준값.) 콜백함수를 호출하기 위해 함수를 사용.
+        function proc(cb,max) {     // 본인이 가진 값만큼 for문이 돌아감.(lenth)
+            for(let i=0; i<max; i++) {
+                cb(i);  // argument는 1개, 1개의 값만 호출.
+            }
+        }
+        proc(fn2,10);   // 함수fn2를 다른 함수로 바꿀 수 있고, max값도 원하는 값으로 넣으면 그 값만큼만 찍을 수 있음.
+        console.log('-------------------');
+        proc(function(item){
+            console.log(`ddd : ${item * 2}`);
+        }, 3);
+    </script>
+</body>
+</html>
+

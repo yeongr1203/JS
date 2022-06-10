@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>유사배열, forEach</title>
+</head>
+<body>
+    <script>
+        const myArr = { 
+            '0' : 10,       
+            '1' : 43,
+            '2' : 22,
+            '3' : 38,
+            '4' : 17,
+            '5' : 56,
+            '6' : 47,
+            'length' : 7,
+            'forEach' : function(cb) {      
+                for(let i=0; i<this.length; i++) {  
+                    const val = this[i]; // this는 자기자신의 주소값.         
+                    cb(val, i);   // 원래는 인자값 2개가 아니라 ,this까지 3가지 보냄.
+                }
+            }
+            // 'forEach' : 10  // 자바스크립트에서는 덮어쓰기가 있음. 
+            // 그래서 이렇게 쓰고 함수 불러오기를하면 함수가 아니라서 에러가 터짐.  
+        }
+
+        let sum = 0;                
+        function fnsum(item, idx, arr) {   // 가지고 오는 값은 2가지라서  arr에는 undefined가 들어옴.
+            sum += item;
+        }
+        myArr.forEach(fnsum);        
+        console.log(myArr.length);
+        console.log(myArr[0]);
+        console.log(myArr[1]);
+        
+        console.log(`my_sum : ${sum}`); 
+        // console.log(myArr.forEach);  // 덮어쓰기 된 값 확인.
+
+
+
+
+        /*
+        let sum = 0;                
+        function fnsum(item) {   
+            sum += item;
+        }
+        myArr.forEach(fnsum);              
+        console.log(`sum : ${sum}`);   
+
+
+        let sum2 = 0;
+        arr.forEach(function(item) {    
+            sum2 += item;
+        });
+        console.log(`sum2 : ${sum2}`);
+
+        console.log('--------------');
+        arr.forEach(function(item, idx){
+            console.log(`arr[${idx}] : ${item}`);
+        });
+
+        // Q. 값이 짝수인 애들만 나타나도록 하기.
+        console.log('--------------');
+        arr.forEach(function(item, idx){
+            if(item % 2 === 0 ){
+                console.log(`arr[${idx}] : ${item}`);
+            } 
+        });
+
+        // Q. 값이 홀수인 애들 합계를 구하시오.
+        console.log('--------------');
+        let sum_odd = 0;
+        arr.forEach(function(item){
+            if(item%2 !== 0){           // item % 2 === 1 도 가능.
+                sum_odd += item;
+            }
+        });
+        console.log(`홀수 전체 더함 : ${sum_odd}`);
+        */
+    </script>
+</body>
+</html>

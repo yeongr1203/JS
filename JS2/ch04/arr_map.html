@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>map_기존 배열로 새로운 배열만들기</title>
+    <!-- 잘 사용하지 않음. -->
+</head>
+<body>
+    <script>
+        const arr = [ 10, 43, 22, 38, 17, 56, 47 ]; // 배열의 주솟값 복사.
+        const arr2 = arr.map(function(item) {   // arr.map의 주솟값을 복사해서 줌. 하지만 arr2는 arr의 주솟값과는 다른 주솟값이다.
+            // arr.map 메소드는 함수를 받아 함수를 실행해서 그 주솟값을 넘겨준다.
+            // map은 새로운 배열을 만들어 주는것. 
+            // 대신 기존의 배열에 내가 원하는 값을 추출해서 조건에 맞춘 값을 리턴시켜 그 값을 출력한다.
+            return item +1;
+        }); // 깊은복사
+        // forEach랑 비슷. 하지만 결과가 다름.
+        console.log(arr.toString());
+        console.log(arr2.toString());
+        console.log('---------------');
+        const arr4 = arr;   // arr과 같은 주소값. 그래서 얕은복사
+        console.log(arr4.toString());
+
+        console.log('---------------');
+        
+        // Q. 짝수만 곱하기 2
+        const arr3 = arr.map(function(item){            // 선생님 풀이
+            return item % 2 === 0? item * 2 : item;
+            // 3항식으로 풀이
+        });
+        console.log(arr3.toString());
+        
+        /* 내풀이
+        const arr3 = arr.map(function(item){
+            if(item % 2 === 0){
+                return item * 2;
+            }
+            return item;
+        });
+        console.log(arr3.toString());
+        */
+    </script>
+</body>
+</html>

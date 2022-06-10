@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>map사용하여 배열 값 나타내기</title>
+</head>
+<body>
+    <script>
+        const myArr = { 
+            '0' : 10,      
+            '1' : 43,
+            '2' : 22,
+            '3' : 38,
+            '4' : 17,
+            '5' : 56,
+            '6' : 47,
+            'length' : 7,
+            'forEach' : function(cb) {      
+                for(let i=0; i<this.length; i++) {  
+                    const val = this[i];         
+                    cb(val, i);
+                }
+            },
+            'map' : function(cb) {
+                const tempArr =[];  // 새 배열 만듬.
+                for(let i=0; i<this.length; i++){   
+                    // const returnVal = cb(this[i],i);
+                    // tempArr.push(returnVal);
+                    // 한줄로 작성가능.
+                    tempArr.push(cb(this[i],i));
+                    // 지금this 내 배열을 tempArr에 push해줌. 
+                    // 호출해서 배열값  push. 총 가지고있는 length값만큼 push
+                }
+                return tempArr;
+            }
+
+        }
+
+        // 선생님 풀이
+        const arr2 = myArr.map(function(item, idx){     // 인덱스로 조건 맞출꺼면 idx를 받아야 함.
+            console.log(idx);
+            return item +5;
+        });
+        // console.log(arr.toString());
+        console.log(arr2.toString());
+        console.log(myArr);
+        //
+        const standIdx = 4; 
+        const arr3 = myArr.map(function(item, idx){
+            return idx > standIdx ? item *2 : item; // standIdx를 사용해서 풀이.
+        });
+        console.log(arr3);
+
+    </script>
+</body>
+</html>
