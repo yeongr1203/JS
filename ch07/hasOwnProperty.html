@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>hasOwnProperty</title>
+</head>
+<body>
+    <script>
+        const obj1 = {
+            name : '홍길동',
+            age : 20
+        }
+        console.log(obj1.hasOwnProperty('name'));
+        console.log(obj1.hasOwnProperty('age'));
+        obj1.addr = '경기도';
+        console.log(obj1.hasOwnProperty('addr'));
+        // obj1.prototype.height = 172.2;              // prototype으로 연결이 됨. //없던 값이라 에러뜸.
+    
+        function Human(name, age) {
+            this.name = name;
+            this.age = age;
+        }
+        Human.prototype.height = 172.2;     // prototype을 만들고 난 후.
+        const obj2 = new Human('홍길동', 21);
+        console.log(obj2.hasOwnProperty('name'));
+        console.log(obj2.hasOwnProperty('age'));
+        obj2.addr = '제주도';
+        console.log(obj2.hasOwnProperty('addr'));       // hasOwnProperty 는 부모가 가진 타입을 상속 받아서 사용하기 때문에 
+        // obj2.height = 182.2;       
+        console.log(obj2.height);                       // 상속받는 것은 false, 원래 가지고 있는 것은 true
+        console.log(obj2.hasOwnProperty('height'));
+        
+    </script>
+</body>
+</html>

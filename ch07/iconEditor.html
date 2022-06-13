@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function elt(name, attr) {
+            const node = document.createElement(name);
+            if(attr) {  
+                for(var item in attr) {                         
+                    if(attr.hasOwnProperty(item)) {
+                        node.setAttribute(item, attr[item]); 
+                    };  
+                }
+            }
+            return node;
+        }
+
+        function createIconEditor(parent, nx, ny) {
+            // color 넣을 수 있는 input 생성.
+            const inputColor = elt('input',{type : 'color'});
+            parent.appendChild(inputColor);
+            inputColor.id = 'colorSelect';
+
+            // All Clear Button
+            const btnAllClear = elt('input',{ type: 'button' , value: 'All clear' });
+            parent.appendChild(btnAllClear);
+
+            //table
+            const table = elt('table');
+            parent.appendChild(table);
+
+            table.style.borderCollaspe = 'collapse';
+            table.style.marginTop = '10px';
+                       
+            for( let i=0; i<ny; i++){
+                const tr = elt('tr');
+                for(let z=0; z<nx; z++){
+                    const td = elt('td');
+                    tr.appendChild(td);                    
+
+                    td.style.width = td.style.height = '15px';
+                    td.style.border = '1px solid #000';
+                    td.className = 'td';
+                    // 내 풀이
+                    // td.onclick = function() {
+                    //     td.style
+                    //    td.style.backgroundColor = inputColor.value;
+                    // }
+
+                    // 풀이 1
+                    // td.addEventListener('click', function(e){
+                    //     e.target.style.backgroundColor = inputColor.value;
+                    //     // e.target은 이벤트 발생한 나 자신을 뜻함. 이것이 더 퍼포먼스가 좋음.                    
+                    // });
+
+                    // 풀이 2 == 클릭할때 되고 안되고
+                    td.addEventListener('click', function(e){
+                        console.log(e.target.style.backgroundColor.toString(16));   //16진수
+                        console.log(inputColor.value);  // 컬러값확인
+                        if(e.target.style.backgroundColor === ''){
+                            e.target.style.backgroundColor = inputColor.value;
+                        } else {
+                            e.target.style.backgroundColor = '';
+                        }
+                    });
+                }
+                table.appendChild(tr);  // const 다음에 작성해도 됨.         
+            }
+        }
+
+        createIconEditor(document.body, 10, 5);
+    </script>
+
+
+</body>
+</html>

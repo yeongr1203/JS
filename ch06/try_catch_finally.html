@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>try catch finally</title>
+</head>
+<body>
+    <script>
+
+        // finally 없는 함수.
+        function fn1() {
+            try {
+                const div = 10 / 2;
+                return div;     // true로 값이 fn1이 들어가기 때문에 뒤에껀 모두 실행되지 않음.
+            } catch(e) {
+                console.log(e);
+            }
+            console.log('무조건 실행해야 하는 소스');   // 이렇게 작성하면 return이 없어서 undefined로 뜸.
+            return 0;   // 그래서 이게 꼭 있어야함.
+        }
+
+        function fn2() {
+            try {
+                const div = 10 / 2;
+                return div;     // true로 값이 fn1이 들어가기 때문에 뒤에껀 모두 실행되지 않음.
+            } catch(e) {
+                console.log(e);
+            } finally {     // 위에 true라도 finally가 있어서 어떤 상황에서도 무조건 실행됨.
+                console.log('무조건 실행해야 하는 소스');
+            }
+            return 0;   // 그래서 이게 꼭 있어야함.
+        }
+
+        const fn1Result = fn1();
+        console.log(fn1Result);
+        console.log('-------------------');
+        const fn2Result = fn2();
+        console.log(fn2Result);
+
+    </script>
+</body>
+</html>
+
+<!-- 
+
+    Select문 할떄.
+    connection
+    PreparedStatedment
+    ResultSet
+    이렇게 작성하는데,
+
+    닫을 때 이렇게 작성.
+    try {
+        ResultSet
+    }
+    try {
+        PreparedStatedment
+    }
+    try {
+        connection
+    }
+    하나가 에러가 터져도 뒤에도 실행이 되도록.
+
+ -->
